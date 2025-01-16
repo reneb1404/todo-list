@@ -6,7 +6,7 @@ interface TaskFormProps {
 	onAddTask: (task: Task) => void;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
+export function TaskForm({ onAddTask }: TaskFormProps) {
 	const [task, setTask] = useState<Task>({
 		id: 0,
 		title: "",
@@ -62,4 +62,4 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
 			</button>
 		</form>
 	);
-};
+}

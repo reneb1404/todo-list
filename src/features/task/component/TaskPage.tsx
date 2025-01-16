@@ -10,6 +10,11 @@ export function TaskPage() {
 	const addTask = (task: Task) => {
 		setTask((prevTask) => [...prevTask, task]);
 	};
+
+	const deleteTask = (taskId: number) => {
+		setTask((prevTask) => prevTask.filter((task) => task.id !== taskId));
+	};
+
 	return (
 		<>
 			<div className="text-white bg-surface-10 mt-4 w-full flex flex-col items-center">
@@ -19,7 +24,7 @@ export function TaskPage() {
 				</div>
 			</div>
 			<div className="p-8 mt-16">
-				<TaskList tasks={tasks} />
+				<TaskList tasks={tasks} onDelete={deleteTask} />
 			</div>
 		</>
 	);

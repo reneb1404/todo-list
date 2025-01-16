@@ -4,14 +4,15 @@ import React from "react";
 
 interface TaskListProps {
 	tasks: Task[];
+	onDelete: (taskId: number) => void;
 }
 
-export const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
+export function TaskList({ tasks, onDelete }: TaskListProps) {
 	return (
 		<div className="flex flex-wrap justify-center mt-10">
 			{tasks.map((task) => (
-				<TaskItem key={task.id} task={task} />
+				<TaskItem key={task.id} task={task} onDelete={onDelete} />
 			))}
 		</div>
 	);
-};
+}
