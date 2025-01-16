@@ -1,4 +1,5 @@
 "use client";
+import { TaskModal } from "@/src/entities/task/component/TaskModal";
 import { Task } from "@/src/entities/task/model";
 import { useState } from "react";
 import { TaskForm } from "./TaskForm";
@@ -6,6 +7,8 @@ import { TaskList } from "./TaskList";
 
 export function TaskPage() {
 	const [tasks, setTask] = useState<Task[]>([]);
+	const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 	const addTask = (task: Task) => {
 		setTask((prevTask) => [...prevTask, task]);
@@ -13,6 +16,23 @@ export function TaskPage() {
 
 	const deleteTask = (taskId: number) => {
 		setTask((prevTask) => prevTask.filter((task) => task.id !== taskId));
+	};
+
+	const updateTask = (updatedTask: Task) => {
+		setTask((prevTask) =>
+			prevTask.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+		);
+		closeUpdateTask();
+	};
+
+	const openUpdateTask = (task: Task) => {
+		setSelectedTask(task);
+		setIsModalOpen(true);
+	};
+
+	const closeUpdateTask = () => {
+		setSelectedTask(null);
+		setIsModalOpen(false);
 	};
 
 	return (
@@ -24,8 +44,19 @@ export function TaskPage() {
 				</div>
 			</div>
 			<div className="p-8 mt-16">
-				<TaskList tasks={tasks} onDelete={deleteTask} />
+				<TaskList
+					tasks={tasks}
+					onDelete={deleteTask}
+					onUpdate={openUpdateTask}
+				/>
 			</div>
+			{isModalOpen && selectedTask && (
+				<TaskModal
+					task={selectedTask}
+					onClose={closeUpdateTask}
+					onUpdate={updateTask}
+				/>
+			)}
 		</>
 	);
 }

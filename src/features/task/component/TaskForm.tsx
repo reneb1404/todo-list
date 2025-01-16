@@ -30,7 +30,7 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="flex justify-center gap-2 flex-wrap w-64"
+			className="flex justify-center gap-2 flex-wrap w-64 text-center"
 		>
 			<input
 				type="text"
