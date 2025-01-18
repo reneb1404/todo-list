@@ -7,6 +7,7 @@ interface TaskItemProps {
 }
 
 export function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
+	console.log(task);
 	return (
 		<div className="p-4 max-w-sm">
 			<div className="flex rounded-lg h-full bg-surface-10 p-8 flex-col">

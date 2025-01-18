@@ -1,12 +1,12 @@
 export class TaskService {
 	private static currentId = 0;
 
-	static createTask(title: string, todo: string, date: string) {
+	static createTask(title: string, date: string, todo: string) {
 		return {
 			id: ++this.currentId,
 			title,
-			todo,
 			date,
+			todo,
 		};
 	}
 }

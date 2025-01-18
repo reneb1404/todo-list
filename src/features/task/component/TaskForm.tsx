@@ -10,8 +10,8 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
 	const [task, setTask] = useState<Task>({
 		id: 0,
 		title: "",
-		todo: "",
 		date: "",
+		todo: "",
 	});
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
 		if (task.title && task.date) {
 			const newTask = TaskService.createTask(task.title, task.date, task.todo);
 			onAddTask(newTask);
-			setTask({ id: 0, title: "", todo: "", date: "" });
+			setTask({ id: 0, title: "", date: "", todo: "" });
 		}
 	};
 	return (
