@@ -1,14 +1,31 @@
 "use client";
 import { TaskModal } from "@/src/entities/task/component/TaskModal";
 import { Task } from "@/src/entities/task/model";
-import { useState } from "react";
+import {
+	loadFromLocalStorage,
+	saveToLocalStorage,
+} from "@/src/shared/ui/lib/localStorage";
+import { useEffect, useState } from "react";
 import { TaskForm } from "./TaskForm";
 import { TaskList } from "./TaskList";
+
+const LOCAL_STORAGE_KEY = "tasks";
 
 export function TaskPage() {
 	const [tasks, setTask] = useState<Task[]>([]);
 	const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+	useEffect(() => {
+		const savedTask = loadFromLocalStorage<Task[]>(LOCAL_STORAGE_KEY);
+		if (savedTask) {
+			setTask(savedTask);
+		}
+	}, []);
+
+	useEffect(() => {
+		saveToLocalStorage<Task[]>(LOCAL_STORAGE_KEY, tasks);
+	}, [tasks]);
 
 	const addTask = (task: Task) => {
 		setTask((prevTask) => [...prevTask, task]);
