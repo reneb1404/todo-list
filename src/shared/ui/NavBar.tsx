@@ -10,11 +10,13 @@ export default function NavBar() {
 			</div>
 			<div className="flex-none">
 				<ul className="menu menu-horizontal px-1">
-					<li>
+					<li className="font-semibold text-lg">
 						<Link href="/">About</Link>
 					</li>
 					<li>
-						<Link href="/">Login</Link>
+						<Link href="/login" className="font-semibold text-lg">
+							Login
+						</Link>
 					</li>
 				</ul>
 			</div>
