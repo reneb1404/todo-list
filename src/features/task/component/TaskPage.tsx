@@ -4,7 +4,7 @@ import { Task } from "@/src/entities/task/model";
 import {
 	loadFromLocalStorage,
 	saveToLocalStorage,
-} from "@/src/shared/ui/lib/localStorage";
+} from "@/src/shared/lib/localStorage";
 import { useEffect, useState } from "react";
 import { TaskForm } from "./TaskForm";
 import { TaskList } from "./TaskList";
@@ -54,9 +54,9 @@ export function TaskPage() {
 
 	return (
 		<>
-			<div className="text-white bg-surface-10 mt-4 w-full flex flex-col items-center">
+			<div className="mt-4 w-full flex flex-col items-center">
 				<h2 className="text-2xl p-4">Tasks</h2>
-				<div className="task-actions flex gap-4 items-center pb-5">
+				<div className="flex gap-4 items-center pb-5">
 					<TaskForm onAddTask={addTask} />
 				</div>
 			</div>

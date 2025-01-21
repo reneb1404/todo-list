@@ -8,29 +8,20 @@ interface TaskItemProps {
 
 export function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
 	console.log(task);
+
 	return (
-		<div className="p-4 max-w-sm">
-			<div className="flex rounded-lg h-full bg-surface-10 p-8 flex-col">
-				<div className="flex items-center mb-3">
-					<h2 className="text-lg font-medium">{task.title}</h2>
-				</div>
-				<div className="flex items-center mb-3">
-					<h2 className="font-medium text-white/75">{task.date}</h2>
-				</div>
-				<div className="flex flex-col justify-between flex-grow">
-					<p className="leading-relaxed text-base text-balance">{task.todo}</p>
-				</div>
-				<button
-					onClick={() => onDelete(task.id)}
-					className="btn border-surface-30 border-2 w-full mt-5 rounded-lg text-center"
-				>
+		<div className="card bg-base-100 max-w-sm card-xl roundend-md shadow-sm p-4">
+			<div className="card-body">
+				<h2 className="card-title">{task.title}</h2>
+				<h2 className="font-medium opacity-75">{task.date}</h2>
+				<p className="leading-relaxed text-base text-balance">{task.todo}</p>
+			</div>
+			<div className="justify-around card-actions">
+				<button className="btn btn-primary" onClick={() => onDelete(task.id)}>
 					Delete
 				</button>
-				<button
-					onClick={() => onUpdate(task)}
-					className="btn border-surface-30 border-2 w-full mt-5 rounded-lg text-center"
-				>
-					Edit
+				<button className="btn btn-primary" onClick={() => onUpdate(task)}>
+					Update
 				</button>
 			</div>
 		</div>

@@ -22,26 +22,26 @@ export function TaskModal({ task, onClose, onUpdate }: UpdateModalProps) {
 	};
 
 	return (
-		<div className="fixed inset-0 bg-surface-20 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center text-center">
-			<div className="bg-surface-10 p-5 border-8 border-surface-20 w-80">
-				<h2>Update Task</h2>
+		<dialog id="my_modal_1" className="modal modal-open">
+			<div className="modal-box">
 				<form
+					method="dialog"
+					className="flex gap-5 flex-col"
 					onSubmit={handleSubmit}
-					className="flex flex-wrap gap-4 justify-center"
 				>
 					<input
 						type="text"
 						name="title"
 						value={updatedTask.title}
 						onChange={handleChange}
-						className="bg-surface-20 p-1 rounded-lg w-full"
+						className="input rounded-lg w-full"
 						placeholder="Title"
 					/>
 					<input
 						type="date"
 						name="date"
 						value={updatedTask.date}
-						className="bg-surface-20 p-1 rounded-lg w-full"
+						className="input rounded-lg w-full"
 						onChange={handleChange}
 					/>
 					<input
@@ -49,24 +49,22 @@ export function TaskModal({ task, onClose, onUpdate }: UpdateModalProps) {
 						name="todo"
 						value={updatedTask.todo}
 						onChange={handleChange}
-						className="bg-surface-20 p-1 rounded-lg w-full"
-						placeholder="ToDo..."
+						className="input rounded-lg w-full"
 					/>
 					<button
 						type="submit"
-						className="btn border-surface-30 border-2 w-24 pt-1 rounded-lg"
+						className="btn rounded-lg bg-accent text-accent-content"
 					>
 						Update
 					</button>
 					<button
-						type="button"
-						className="btn border-surface-30 border-2 w-24 pt-1 rounded-lg"
+						className="btn rounded-lg bg-accent text-accent-content"
 						onClick={onClose}
 					>
-						Cancel
+						Close
 					</button>
 				</form>
 			</div>
-		</div>
+		</dialog>
 	);
 }

@@ -37,14 +37,15 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
 				name="title"
 				value={task.title}
 				onChange={handleInputChange}
-				className="bg-surface-20 p-1 rounded-lg w-full"
+				placeholder="Title"
+				className="input rounded-lg w-full"
 			/>
 			<input
 				type="date"
 				name="date"
 				value={task.date}
 				onChange={handleInputChange}
-				className="bg-surface-20 p-1 rounded-lg w-full"
+				className="input rounded-lg w-full"
 			/>
 			<input
 				type="text"
@@ -52,12 +53,9 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
 				value={task.todo}
 				onChange={handleInputChange}
 				placeholder="ToDo..."
-				className="bg-surface-20 p-1 rounded-lg w-full"
+				className="input rounded-lg w-full"
 			/>
-			<button
-				type="submit"
-				className="btn border-surface-30 border-2 w-24 pt-1 rounded-lg"
-			>
+			<button type="submit" className="btn bg-primary btn-wide rounded-lg bg-">
 				Add
 			</button>
 		</form>
