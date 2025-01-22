@@ -1,4 +1,5 @@
-import GitHubLoginButton from "./LoginButton";
+import GitHubLoginButton from "./GitHubLoginButton";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 export function LoginDivider() {
 	return (
@@ -8,9 +9,7 @@ export function LoginDivider() {
 			</div>
 			<div className="divider"></div>
 			<div className="card bg-base-300 rounded-box grid h-20 place-items-center">
-				{
-					//<GoogleSignInButton />
-				}
+				<GoogleLoginButton />
 			</div>
 		</div>
 	);
